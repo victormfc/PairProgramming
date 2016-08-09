@@ -21,7 +21,7 @@ end
 
 
 josh= HourlyEmployee.new('Josh', 'nachoemail@example.com', 35, 50)
-puts josh.weekly
+
 
 class SalariedEmployee < Employee
 	attr_reader :salary
@@ -36,7 +36,7 @@ class SalariedEmployee < Employee
 end
 
 nizar = SalariedEmployee.new('Nizar', 'nizar@gmail.com', 100000)
-puts nizar.weekly
+
 	
 class MultipaymentEmployee < Employee
 
@@ -59,22 +59,31 @@ class MultipaymentEmployee < Employee
 end
 
 ted=MultipaymentEmployee.new('Ted','ted@email.com',60000,275,55)
-puts ted.weekly
+
 
 class Payroll 
 
-	def initialize employees
-		@employees= employees
+	def initialize 
+		@employees= []
+	end
+
+	def add_employee employee
+		@employees.push(employee)
 	end
 
 	def pay_employees
-		recoger el array employees con el metodo weekly
+		@employees.each do |employee|
+			puts "#{employee.name}: #{employee.weekly}"
+		end
 	end
 
 end
 
 employees=[josh,nizar,ted]
-payroll=Payroll.new(employees)
+payroll=Payroll.new()
+
+payroll.add_employee(ted)
+payroll.add_employee(josh)
+payroll.add_employee(nizar)
+
 payroll.pay_employees
-
-
